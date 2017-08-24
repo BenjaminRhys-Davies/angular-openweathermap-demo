@@ -1,51 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-city',
   templateUrl: './city.component.html',
   styleUrls: ['./city.component.scss']
 })
-export class CityComponent implements OnInit {
-  private countryFlagUri = 'http://openweathermap.org/images/flags/{{{countryCode}}}.png';
-  private currentId: number;
-  private countryCode: string;
-
-  public flag: string;
-
+export class CityComponent {
   @Input() id: number;
   @Input() name: string;
   @Input() hasForecast: boolean;
   @Input() hasWeather: boolean;
+  @Input() isActive: boolean;
+  @Input() countryCode: string;
 
-  @Input()
-  get country (): string {
-    return this.countryCode;
-  }
-  set country (countryCode: string) {
-    this.countryCode = countryCode;
-    this.flag = countryCode ?
-      this.countryFlagUri.replace(/{{{countryCode}}}/, countryCode.toLowerCase()) :
-      undefined;
-  }
+  @Output() selected: EventEmitter<number> = new EventEmitter();
 
-  constructor (
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {}
+  constructor () {}
 
-  ngOnInit () {
-    this.route.params.subscribe(params => {
-      this.currentId = params['id'] ? parseInt(params['id'], 10) : undefined;
-    });
-  }
-
-  public navigateToForecast (id: number): void {
-    const params = this.isCurrentId(id) ? ['/'] : ['/forecast', id];
-    this.router.navigate(params);
-  }
-
-  public isCurrentId (id: number): boolean {
-    return id === this.currentId;
+  public activate (id: number): void {
+     this.selected.emit(id);
   }
 }

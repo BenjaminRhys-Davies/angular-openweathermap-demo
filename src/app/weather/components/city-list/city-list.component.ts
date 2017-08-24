@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICity, IWeather, IForecast } from '../../../../api/openWeatherMap/index';
 import { ForecastService } from '../../services/forecast/forecast.service';
 import { WeatherService } from '../../services/weather/weather.service';
@@ -20,9 +20,11 @@ interface ICityWeatherReport extends ICity {
 })
 export class CityListComponent implements OnInit {
   private cityWeatherReports: Array<ICityWeatherReport> = CITIES;
+  private activeCityId: number;
 
   constructor (
     private route: ActivatedRoute,
+    private router: Router,
     private weatherService: WeatherService,
     private forecastService: ForecastService,
   ) {}
@@ -37,14 +39,13 @@ export class CityListComponent implements OnInit {
     );
 
     this.route.params.subscribe(params => {
-      const id: number = parseInt(params['id'], 10);
-
       this.cityWeatherReports.map((city: ICityWeatherReport) => {
         delete city.forecasts;
       });
 
-      if (id) {
-        this.getForecast(id);
+      if (params['id']) {
+        this.activeCityId = parseInt(params['id'], 10);
+        this.getForecast(this.activeCityId);
       }
     });
   }
@@ -59,5 +60,14 @@ export class CityListComponent implements OnInit {
         _.find(this.cityWeatherReports, ['id', id]).forecasts = forecasts;
       }
     );
+  }
+
+  private activatedCity (id: number): void {
+    const params = this.isActiveCity(id) ? ['/'] : ['/forecast', id];
+    this.router.navigate(params);
+  }
+
+  private isActiveCity (id: number): boolean {
+    return this.activeCityId === id;
   }
 }
