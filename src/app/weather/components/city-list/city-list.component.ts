@@ -39,7 +39,7 @@ export class CityListComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id: number = parseInt(params['id'], 10);
 
-      _.map(this.cityWeatherReports, (city: ICityWeatherReport) => {
+      this.cityWeatherReports.map((city: ICityWeatherReport) => {
         delete city.forecasts;
       });
 
