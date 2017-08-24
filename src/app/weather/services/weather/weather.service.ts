@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import * as _ from 'lodash';
 
 import { OpenWeatherMapApiClientService, ICity, IWeather, Weather } from '../../../../api/openWeatherMap/index';
 
@@ -10,12 +9,7 @@ import { MAXIMUM_NUMBER_OF_GROUP_IDS } from '../../settings/max-group-ids';
 @Injectable()
 export class WeatherService {
   private cache: { [id: string]: Observable<IWeather>; } = {};
-
-  private cityIds: Array<number> = _.reduce(
-    CITIES,
-    (memo, city: ICity) => { memo.push(city.id); return memo; },
-    []
-  );
+  private cityIds: Array<number> = CITIES.map((city: ICity) => city.id);
 
   constructor (
     private weatherApi: OpenWeatherMapApiClientService,

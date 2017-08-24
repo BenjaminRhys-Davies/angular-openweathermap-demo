@@ -13,6 +13,11 @@ describe('@service: Weather', () => {
     weatherService = new WeatherService(mockWeatherApi);
   });
 
+  it('is not hydrated', () => {
+    expect(mockWeatherApi.GetGroupWeather)
+      .not.toHaveBeenCalled();
+  });
+
   describe('hydrate ()', () => {
     beforeEach(() => {
       weatherService.hydrate();

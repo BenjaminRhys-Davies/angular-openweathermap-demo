@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
-import * as _ from 'lodash';
 
 import { CityListComponent } from './city-list.component';
 
@@ -106,13 +105,13 @@ describe('@component: CityList', () => {
     });
 
     it('should not have weather', () => {
-      _.each(component.weatherReports, (city) => {
+      component.weatherReports.map((city) => {
         expect(city.weather).toBeUndefined();
       });
     });
 
     it('should not have forecasts', () => {
-      _.each(component.weatherReports, (city) => {
+      component.weatherReports.map((city) => {
         expect(city.forecasts).toBeUndefined();
       });
     });
