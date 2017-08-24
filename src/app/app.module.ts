@@ -8,6 +8,8 @@ import { OpenWeatherMapApiClientService } from '../api/openWeatherMap/index';
 import { HttpWrapperService } from './core/services/http-wrapper/http-wrapper.service';
 import { AuthService } from './core/services/auth/auth.service';
 
+import { FlagPipe } from './weather/pipes/flag/flag.pipe';
+
 import { AppComponent } from './core/components/app/app.component';
 
 import { CityListComponent } from './weather/components/city-list/city-list.component';
@@ -42,6 +44,7 @@ import { appRoutes } from './app.routing';
     WeatherComponent,
     ForecastListComponent,
     ForecastComponent,
+    FlagPipe,
   ],
   bootstrap: [ AppComponent ]
 })

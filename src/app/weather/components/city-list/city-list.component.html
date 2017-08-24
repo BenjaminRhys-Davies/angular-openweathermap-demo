@@ -1,11 +1,14 @@
 <section class="city-list">
   <ul>
     <app-city *ngFor="let report of weatherReports"
-      [country]="report.country"
+      [countryCode]="report.country"
       [id]="report.id"
       [name]="report.name"
       [hasForecast]="!!report.forecasts"
-      [hasWeather]="!!report.weather">
+      [hasWeather]="!!report.weather"
+      [isActive]="isActiveCity(report.id)"
+      (selected)="activatedCity($event)"
+    >
 
       <app-weather *ngIf="report.weather"
         [description]="report.weather.climate.description"
