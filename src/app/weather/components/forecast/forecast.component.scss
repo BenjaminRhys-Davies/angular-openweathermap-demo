@@ -1,0 +1,29 @@
+@import '../../../../styles/colours';
+@import '../../../../styles/mixins/text-shadow';
+
+.forecast {
+  color: $color-contrast-light;
+  text-align: center;
+  line-height: 1;
+
+  &__day,
+  &__pressure {
+    color: $color-contrast-lighter;
+  }
+
+  &__pressure {
+    span {
+      @include text-shadow;
+
+      display: block;
+      font-size: 180%;
+      color: $color-contrast-light;
+
+      sup {
+        position: relative;
+        top: -1rem;
+        font-size: 50%;
+      }
+    }
+  }
+}

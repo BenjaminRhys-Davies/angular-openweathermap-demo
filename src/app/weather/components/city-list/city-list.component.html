@@ -1,0 +1,23 @@
+<section class="city-list">
+  <ul>
+    <app-city *ngFor="let report of weatherReports"
+      [country]="report.country"
+      [id]="report.id"
+      [name]="report.name"
+      [hasForecast]="!!report.forecasts"
+      [hasWeather]="!!report.weather">
+
+      <app-weather *ngIf="report.weather"
+        [description]="report.weather.climate.description"
+        [icon]="report.weather.climate.icon"
+        [main]="report.weather.climate.main"
+        [sun]="report.weather.sun"
+        [temperature]="report.weather.temperature">
+      </app-weather>
+
+      <app-forecastlist *ngIf="report.forecasts"
+        [forecasts]="report.forecasts">
+      </app-forecastlist>
+    </app-city>
+  </ul>
+</section>

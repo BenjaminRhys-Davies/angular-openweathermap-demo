@@ -1,0 +1,25 @@
+<div class="weather">
+
+  <div class="weather__overview"
+       [title]="isPlural(description) ?
+          temperature + '°c with ' + description :
+          temperature + '°c with a ' + description"
+       [style.backgroundImage]="'url(' + icon + ')'">
+    <p class="weather__overview-temp">{{temperature}}°</p>
+    <p class="weather__overview-strap">{{main}}</p>
+  </div>
+
+  <p *ngIf="sun" class="weather__sun">
+    <span [ngSwitch]="isTimeInFuture(sun.rise)">
+      <span *ngSwitchCase="true">Sun will rise at {{formatAsTime(sun.rise)}}</span>
+      <span *ngSwitchDefault>Sun rose at {{formatAsTime(sun.rise)}}</span>
+    </span>
+
+    <span [ngSwitch]="isTimeInFuture(sun.set)">
+      <span *ngSwitchCase="true">and will set at {{formatAsTime(sun.set)}}</span>
+      <span *ngSwitchDefault>and set at {{formatAsTime(sun.set)}}</span>
+    </span>
+  </p>
+
+</div>
+

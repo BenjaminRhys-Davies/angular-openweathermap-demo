@@ -1,0 +1,39 @@
+@import '../../../../styles/colours';
+@import '../../../../styles/mixins/text-shadow';
+@import '../../../../styles/mixins/truncate';
+
+.weather {
+  &__overview {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: 50% -.5rem;
+    padding: 3rem 0 0;
+    width: 6rem;
+
+    &-temp,
+    &-strap {
+      @include text-shadow;
+      color: $color-contrast-lighter;
+      text-align: center;
+      line-height: .99;
+    }
+
+    &-temp {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__sun {
+    @include text-shadow;
+    @include truncate;
+
+    position: relative;
+    top: -1.5rem;
+
+    margin: 0 5.5rem 0 0;
+    padding: 0 1rem;
+    color: $color-contrast-light;
+  }
+}

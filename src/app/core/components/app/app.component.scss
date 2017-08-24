@@ -1,0 +1,42 @@
+@import '../../../../styles/colours';
+
+.app {
+  padding: 2rem 1rem 1rem;
+
+  &__heading {
+    font-size: 4rem;
+    color: $color-accent;
+    padding: 1rem 0;
+    border-bottom: 1px solid $color-border;
+    cursor: pointer;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__footer {
+    padding: 3rem 0;
+
+    hr {
+      display: inline-block;
+      border: 0;
+      width: 40%;
+      height: 1px;
+      background-color: $color-border;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: darkgrey;
+      margin-bottom: 1rem;
+
+      img {
+        position: relative;
+        top: .3rem;
+        width: 12rem;
+      }
+    }
+  }
+}

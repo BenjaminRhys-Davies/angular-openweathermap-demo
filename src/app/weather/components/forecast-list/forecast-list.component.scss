@@ -1,0 +1,25 @@
+@import '../../../../styles/colours';
+@import '../../../../styles/mixins/text-shadow';
+
+.forecast-list {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: .5rem 0;
+  background-color: rgba($color-contrast-dark, .65);
+
+  &__context {
+    @include text-shadow;
+
+    text-align: center;
+    color: $color-contrast-light;
+    font-style: italic;
+    font-size: 80%;
+    margin: 0 1rem .5rem;
+  }
+
+  li {
+    display: inline-block;
+  }
+}

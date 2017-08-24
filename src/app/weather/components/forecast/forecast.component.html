@@ -1,0 +1,8 @@
+<div class="forecast" title="On {{readingDate | date:'EEE'}} at {{forecastHour}}00hrs, the forecasted pressure
+at sea-level will be {{pressureInteger}}.{{pressureDecimal}}hpa">
+  <p class="forecast__day">{{readingDate | date:'EEE'}}</p>
+  <p class="forecast__pressure">
+    <span>{{pressureInteger}}<sup>.{{pressureDecimal}}</sup></span>
+    hpa
+  </p>
+</div>

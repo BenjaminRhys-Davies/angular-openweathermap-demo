@@ -1,0 +1,13 @@
+<li class="city"
+   (click)="navigateToForecast(id)"
+   [class.city--isSelected]="isCurrentId(id)"
+   [class.city--hasWeather]="hasWeather"
+   [class.city--hasForecast]="hasForecast"
+   [style.backgroundImage]="'url(/assets/' + name.toLowerCase() + '/index.jpg)'"
+   title="Current weather in {{name}}, {{country}}">
+  <h2 class="city__name">
+    {{name}}
+    <img *ngIf="flag" class="city__flag" [src]="flag" title="Flag of {{name}}, {{country}}">
+  </h2>
+  <ng-content></ng-content>
+</li>

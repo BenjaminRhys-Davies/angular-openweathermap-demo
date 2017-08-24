@@ -1,0 +1,22 @@
+<div class="app">
+  <header>
+    <h1 class="app__heading" (click)="navigateToRoot()">welcome to {{author}}</h1>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <footer class="app__footer">
+    <hr/>
+    <p>
+      Powered by
+      <a href="http://openweathermap.org" title="OpenWeatherMap">
+        <img src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/logo_OpenWeatherMap_orange.svg">
+      </a>
+    </p>
+    <p>
+      Weather Demo hand coded using Angular4, TS, RX, SCSS by
+      <a href="https://linkedin.com/in/brhysdavies">benjamin rhys-davies</a>
+      on Thursday, 27th July 2017
+    </p>
+  </footer>
+</div>

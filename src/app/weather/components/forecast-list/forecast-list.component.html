@@ -1,0 +1,10 @@
+<div class="forecast-list">
+  <p class="forecast-list__context" title="{{forecasts.length}}-day pressure at sea-level forecast…">
+    {{forecasts.length}}-day pressure at sea-level forecast…</p>
+  <ol><li class="forecast-list__forecast" *ngFor="let forecast of forecasts" [style.width]="100 / forecasts.length + '%'">
+    <app-forecast
+      [datetime]="forecast.datetime"
+      [pressure]="forecast.pressure">
+    </app-forecast>
+  </li></ol>
+</div>

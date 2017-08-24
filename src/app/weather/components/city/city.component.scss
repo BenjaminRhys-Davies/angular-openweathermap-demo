@@ -1,0 +1,68 @@
+@import '../../../../styles/colours';
+@import '../../../../styles/mixins/text-shadow';
+@import '../../../../styles/mixins/truncate';
+
+$city-filter: grayscale(100%) opacity(20%);
+$city-filter-populated: grayscale(100%) opacity(80%);
+$city-selected-filter: none;
+$city-transition: filter .4s ease-in-out;
+
+.city {
+  display: block;
+  border: 1px solid $color-border;
+  position: relative;
+  margin: 1rem 0 0;
+  cursor: pointer;
+
+  min-height: 18rem;
+
+  overflow: hidden;
+
+  background-color: $color-contrast-darker;
+  background-size: 100%;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+
+  -webkit-filter: $city-filter;
+  -moz-filter: $city-filter;
+  -o-filter: $city-filter;
+  filter: $city-filter;
+
+  -webkit-transition: $city-transition;
+  -moz-transition: $city-transition;
+  -o-transition: $city-transition;
+  transition: $city-transition;
+
+  &--hasWeather {
+    -webkit-filter: $city-filter-populated;
+    -moz-filter: $city-filter-populated;
+    -o-filter: $city-filter-populated;
+    filter: $city-filter-populated;
+  }
+
+  &:focus,
+  &:hover,
+  &:active,
+  &--isSelected {
+    outline-color: #d26c22;
+
+    -webkit-filter: $city-selected-filter;
+    -moz-filter: $city-selected-filter;
+    -o-filter: $city-selected-filter;
+    filter: $city-selected-filter;
+  }
+
+  &__details {
+    background-color: rgba($color-contrast-dark, .5);
+  }
+
+  &__name {
+    @include text-shadow;
+    @include truncate;
+
+    font-size: 5rem;
+    color: $color-contrast-light;
+    padding: 0 1rem;
+    margin: 0 9rem 0 0;
+  }
+}
